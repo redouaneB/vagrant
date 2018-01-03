@@ -1,12 +1,25 @@
-<project>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+
+<!-- Project informations -->
   <groupId>rubygems</groupId>
   <artifactId>vagrant</artifactId>
   <version>2.0.2.dev-SNAPSHOT</version>
   <packaging>gem</packaging>
-  <name>Build and distribute virtualized development environments.</name>
+  <name>Vagrant</name>
   <url>https://www.vagrantup.com</url>
   <description>Vagrant is a tool for building and distributing virtualized development environments.</description>
+  <inceptionYear>2018</inceptionYear>
+  <organization>
+    <name>HashiCorp</name>
+    <url>https://www.hashicorp.com</url>
+  </organization>
+
+<!-- Project licences -->
   <licenses>
     <license>
       <name>MIT</name>
@@ -14,6 +27,8 @@
       <comments>MIT license</comments>
     </license>
   </licenses>
+
+<!-- Project developers -->
   <developers>
     <developer>
       <name>Mitchell Hashimoto</name>
@@ -24,10 +39,15 @@
       <email>john.m.bender@gmail.com</email>
     </developer>
   </developers>
+
+<!-- Project properties -->
   <properties>
     <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
-    <jruby.plugins.version>1.0.9</jruby.plugins.version>
+    <jRubyVersion>9.1.15.0</jRubyVersion>
+    <jruby.plugins.version>1.1.5</jruby.plugins.version>
   </properties>
+
+<!-- Project dependencies -->
   <dependencies>
     <dependency>
       <groupId>rubygems</groupId>
@@ -161,12 +181,16 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
+<!-- Project repositories -->
   <repositories>
     <repository>
       <id>rubygems-releases</id>
       <url>http://rubygems-proxy.torquebox.org/releases</url>
     </repository>
   </repositories>
+
+<!-- Project build settings -->
   <build>
     <extensions>
       <extension>
@@ -183,6 +207,7 @@
         <version>${jruby.plugins.version}</version>
         <configuration>
           <gemspec>vagrant.gemspec</gemspec>
+          <jrubyVersion>${jRubyVersion}</jrubyVersion>
         </configuration>
       </plugin>
     </plugins>
