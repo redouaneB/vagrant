@@ -6,10 +6,10 @@
   <modelVersion>4.0.0</modelVersion>
 
 <!-- Project informations -->
-  <groupId>rubygems</groupId>
+  <groupId>com.hashicorp</groupId>
   <artifactId>vagrant</artifactId>
-  <version>2.0.2.dev-SNAPSHOT</version>
-  <packaging>gem</packaging>
+  <version>2.0.2-SNAPSHOT</version>
+  <packaging>pom</packaging>
   <name>Vagrant</name>
   <url>https://www.vagrantup.com</url>
   <description>Vagrant is a tool for building and distributing virtualized development environments.</description>
@@ -200,16 +200,5 @@
       </extension>
     </extensions>
     <directory>${basedir}/pkg</directory>
-    <plugins>
-      <plugin>
-        <groupId>de.saumya.mojo</groupId>
-        <artifactId>gem-maven-plugin</artifactId>
-        <version>${jruby.plugins.version}</version>
-        <configuration>
-          <gemspec>vagrant.gemspec</gemspec>
-          <jrubyVersion>${jRubyVersion}</jrubyVersion>
-        </configuration>
-      </plugin>
-    </plugins>
   </build>
 </project>
