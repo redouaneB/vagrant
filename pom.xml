@@ -51,6 +51,29 @@
     <mavenMinimumVersion>3.0</mavenMinimumVersion>
     <jRubyVersion>9.1.15.0</jRubyVersion>
 
+    <bundlerGemVersion>1.16.1</bundlerGemVersion>
+    <childprocessGemVersion>0.6.3</childprocessGemVersion>
+    <erubisGemVersion>2.7.0</erubisGemVersion>
+    <i18nGemVersion>0.8.0</i18nGemVersion>
+    <listenGemVersion>3.1.5</listenGemVersion>
+    <hashicorpCheckpointGemVersion>0.1.4</hashicorpCheckpointGemVersion>
+    <log4rGemVersion>1.1.10</log4rGemVersion>
+    <netSshGemVersion>4.1.0</netSshGemVersion>
+    <netSftpGemVersion>2.1.2</netSftpGemVersion>
+    <netScpGemVersion>1.2.1</netScpGemVersion>
+    <rbKqueueGemVersion>0.2.5</rbKqueueGemVersion>
+    <restClientGemVersion>2.0.2</restClientGemVersion>
+    <wdmGemVersion>0.1.1</wdmGemVersion>
+    <winrmGemVersion>2.2.3</winrmGemVersion>
+    <winrmFsGemVersion>1.1.1</winrmFsGemVersion>
+    <winrmElevatedGemVersion>1.1.0</winrmElevatedGemVersion>
+    <rubyDepGemVersion>1.3.1</rubyDepGemVersion>
+    <rakeGemVersion>12.0.0</rakeGemVersion>
+    <rspecGemVersion>3.5.0</rspecGemVersion>
+    <rspecItsGemVersion>1.2.0</rspecItsGemVersion>
+    <webmockGemVersion>2.3.2</webmockGemVersion>
+    <fakeFtpGemVersion>0.1.1</fakeFtpGemVersion>
+
     <cleanPluginVersion>3.0.0</cleanPluginVersion>
     <deployPluginVersion>2.8.2</deployPluginVersion>
     <enforcerPluginVersion>3.0.0-M1</enforcerPluginVersion>
@@ -64,137 +87,137 @@
     <dependency>
       <groupId>rubygems</groupId>
       <artifactId>bundler</artifactId>
-      <version>1.16.1</version>
+      <version>${bundlerGemVersion}</version>
       <type>gem</type>
     </dependency>
     <dependency>
       <groupId>rubygems</groupId>
       <artifactId>childprocess</artifactId>
-      <version>[0.6.0,0.6.99999]</version>
+      <version>${childprocessGemVersion}</version>
       <type>gem</type>
     </dependency>
     <dependency>
       <groupId>rubygems</groupId>
       <artifactId>erubis</artifactId>
-      <version>[2.7.0,2.7.99999]</version>
+      <version>${erubisGemVersion}</version>
       <type>gem</type>
     </dependency>
     <dependency>
       <groupId>rubygems</groupId>
       <artifactId>i18n</artifactId>
-      <version>[0.6.0,0.8.0]</version>
+      <version>${i18nGemVersion}</version>
       <type>gem</type>
     </dependency>
     <dependency>
       <groupId>rubygems</groupId>
       <artifactId>listen</artifactId>
-      <version>[3.1.5,3.1.99999]</version>
+      <version>${listenGemVersion}</version>
       <type>gem</type>
     </dependency>
     <dependency>
       <groupId>rubygems</groupId>
       <artifactId>hashicorp-checkpoint</artifactId>
-      <version>[0.1.1,0.1.99999]</version>
+      <version>${hashicorpCheckpointGemVersion}</version>
       <type>gem</type>
     </dependency>
     <dependency>
       <groupId>rubygems</groupId>
       <artifactId>log4r</artifactId>
-      <version>[1.1.9,1.1.11)</version>
+      <version>${log4rGemVersion}</version>
       <type>gem</type>
     </dependency>
     <dependency>
       <groupId>rubygems</groupId>
       <artifactId>net-ssh</artifactId>
-      <version>[4.1.0,4.1.99999]</version>
+      <version>${netSshGemVersion}</version>
       <type>gem</type>
     </dependency>
     <dependency>
       <groupId>rubygems</groupId>
       <artifactId>net-sftp</artifactId>
-      <version>[2.1,2.99999]</version>
+      <version>${netSftpGemVersion}</version>
       <type>gem</type>
     </dependency>
     <dependency>
       <groupId>rubygems</groupId>
       <artifactId>net-scp</artifactId>
-      <version>[1.2.0,1.2.99999]</version>
+      <version>${netScpGemVersion}</version>
       <type>gem</type>
     </dependency>
     <dependency>
       <groupId>rubygems</groupId>
       <artifactId>rb-kqueue</artifactId>
-      <version>[0.2.0,0.2.99999]</version>
+      <version>${rbKqueueGemVersion}</version>
       <type>gem</type>
     </dependency>
     <dependency>
       <groupId>rubygems</groupId>
       <artifactId>rest-client</artifactId>
-      <version>[1.6.0,3.0)</version>
+      <version>${restClientGemVersion}</version>
       <type>gem</type>
     </dependency>
     <dependency>
       <groupId>rubygems</groupId>
       <artifactId>wdm</artifactId>
-      <version>[0.1.0,0.1.99999]</version>
+      <version>${wdmGemVersion}</version>
       <type>gem</type>
     </dependency>
     <dependency>
       <groupId>rubygems</groupId>
       <artifactId>winrm</artifactId>
-      <version>[2.1,2.99999]</version>
+      <version>${winrmGemVersion}</version>
       <type>gem</type>
     </dependency>
     <dependency>
       <groupId>rubygems</groupId>
       <artifactId>winrm-fs</artifactId>
-      <version>[1.0,1.99999]</version>
+      <version>${winrmFsGemVersion}</version>
       <type>gem</type>
     </dependency>
     <dependency>
       <groupId>rubygems</groupId>
       <artifactId>winrm-elevated</artifactId>
-      <version>[1.1,1.99999]</version>
+      <version>${winrmElevatedGemVersion}</version>
       <type>gem</type>
     </dependency>
     <dependency>
       <groupId>rubygems</groupId>
       <artifactId>ruby_dep</artifactId>
-      <version>[0,1.3.1]</version>
+      <version>${rubyDepGemVersion}</version>
       <type>gem</type>
     </dependency>
     <dependency>
       <groupId>rubygems</groupId>
       <artifactId>rake</artifactId>
-      <version>[12.0.0,12.0.99999]</version>
+      <version>${rakeGemVersion}</version>
       <type>gem</type>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>rubygems</groupId>
       <artifactId>rspec</artifactId>
-      <version>[3.5.0,3.5.99999]</version>
+      <version>${rspecGemVersion}</version>
       <type>gem</type>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>rubygems</groupId>
       <artifactId>rspec-its</artifactId>
-      <version>[1.2.0,1.2.99999]</version>
+      <version>${rspecItsGemVersion}</version>
       <type>gem</type>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>rubygems</groupId>
       <artifactId>webmock</artifactId>
-      <version>[2.3.1,2.3.99999]</version>
+      <version>${webmockGemVersion}</version>
       <type>gem</type>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>rubygems</groupId>
       <artifactId>fake_ftp</artifactId>
-      <version>[0.1.1,0.1.99999]</version>
+      <version>${fakeFtpGemVersion}</version>
       <type>gem</type>
       <scope>test</scope>
     </dependency>
