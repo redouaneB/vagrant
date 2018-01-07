@@ -73,6 +73,7 @@
     <rspecItsGemVersion>1.2.0</rspecItsGemVersion>
     <webmockGemVersion>2.3.2</webmockGemVersion>
     <fakeFtpGemVersion>0.1.1</fakeFtpGemVersion>
+    <warblerGemVersion>2.0.3</warblerGemVersion>
 
     <cleanPluginVersion>3.0.0</cleanPluginVersion>
     <deployPluginVersion>2.8.2</deployPluginVersion>
@@ -185,6 +186,12 @@
       <groupId>rubygems</groupId>
       <artifactId>ruby_dep</artifactId>
       <version>${rubyDepGemVersion}</version>
+      <type>gem</type>
+    </dependency>
+     <dependency>
+      <groupId>rubygems</groupId>
+      <artifactId>warbler</artifactId>
+      <version>${warblerGemVersion}</version>
       <type>gem</type>
     </dependency>
     <dependency>
