@@ -44,6 +44,9 @@
   <properties>
     <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
 
+    <vagrantQuiet />
+    <vagrantVerbose />
+
     <javaMinimumVersion>1.7.0</javaMinimumVersion>
     <mavenMinimumVersion>3.0</mavenMinimumVersion>
     <jRubyVersion>9.1.15.0</jRubyVersion>
@@ -58,6 +61,12 @@
 
 <!-- Project dependencies -->
   <dependencies>
+    <dependency>
+      <groupId>rubygems</groupId>
+      <artifactId>bundler</artifactId>
+      <version>1.16.1</version>
+      <type>gem</type>
+    </dependency>
     <dependency>
       <groupId>rubygems</groupId>
       <artifactId>childprocess</artifactId>
@@ -212,6 +221,11 @@
     <pluginManagement>
       <plugins>
         <plugin>
+          <groupId>de.saumya.mojo</groupId>
+          <artifactId>bundler-maven-plugin</artifactId>
+          <version>${jruby.plugins.version}</version>
+        </plugin>
+        <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-clean-plugin</artifactId>
           <version>${cleanPluginVersion}</version>
@@ -277,6 +291,25 @@
             </requireMavenVersion>
           </rules>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>de.saumya.mojo</groupId>
+        <artifactId>bundler-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>install</id>
+            <phase>initialize</phase>
+            <goals>
+              <goal>install</goal>
+            </goals>
+            <configuration>
+              <local>false</local>
+              <quiet>${vagrantQuiet}</quiet>
+              <jrubyVerbose>${vagrantVerbose}</jrubyVerbose>
+              <jrubyVersion>${jRubyVersion}</jrubyVersion>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
