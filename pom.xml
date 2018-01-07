@@ -80,6 +80,7 @@
     <installPluginVersion>2.5.2</installPluginVersion>
     <jruby.plugins.version>1.1.5</jruby.plugins.version>
     <sitePluginVersion>3.6</sitePluginVersion>
+    <versionsPluginVersion>2.5</versionsPluginVersion>
   </properties>
 
 <!-- Project dependencies -->
@@ -282,6 +283,11 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-site-plugin</artifactId>
           <version>${sitePluginVersion}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>versions-maven-plugin</artifactId>
+          <version>${versionsPluginVersion}</version>
         </plugin>
       </plugins>
     </pluginManagement>
