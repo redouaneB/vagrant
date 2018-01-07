@@ -43,8 +43,17 @@
 <!-- Project properties -->
   <properties>
     <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
+
+    <javaMinimumVersion>1.7.0</javaMinimumVersion>
+    <mavenMinimumVersion>3.0</mavenMinimumVersion>
     <jRubyVersion>9.1.15.0</jRubyVersion>
+
+    <cleanPluginVersion>3.0.0</cleanPluginVersion>
+    <deployPluginVersion>2.8.2</deployPluginVersion>
+    <enforcerPluginVersion>3.0.0-M1</enforcerPluginVersion>
+    <installPluginVersion>2.5.2</installPluginVersion>
     <jruby.plugins.version>1.1.5</jruby.plugins.version>
+    <sitePluginVersion>3.6</sitePluginVersion>
   </properties>
 
 <!-- Project dependencies -->
@@ -200,5 +209,75 @@
       </extension>
     </extensions>
     <directory>${basedir}/pkg</directory>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>${cleanPluginVersion}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>${deployPluginVersion}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-enforcer-plugin</artifactId>
+          <version>${enforcerPluginVersion}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>${installPluginVersion}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>${sitePluginVersion}</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>default-enforce</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>clean-enforce</id>
+            <phase>pre-clean</phase>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>site-enforce</id>
+            <phase>pre-site</phase>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <rules>
+            <dependencyConvergence />
+            <requirePluginVersions />
+            <requireJavaVersion>
+              <version>${javaMinimumVersion}</version>
+            </requireJavaVersion>
+            <requireMavenVersion>
+              <version>${mavenMinimumVersion}</version>
+            </requireMavenVersion>
+          </rules>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 </project>
