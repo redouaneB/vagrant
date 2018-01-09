@@ -47,6 +47,14 @@
     <vagrantQuiet />
     <vagrantVerbose />
 
+    <src>${project.basedir}</src>
+    <srcBin>${src}/bin</srcBin>
+    <srcLib>${src}/lib</srcLib>
+    <srcPlugins>${src}/plugins</srcPlugins>
+    <srcScripts>${src}/scripts</srcScripts>
+    <target>${project.basedir}/pkg</target>
+    <targetMain>${target}/main</targetMain>
+
     <javaMinimumVersion>1.7.0</javaMinimumVersion>
     <mavenMinimumVersion>3.0</mavenMinimumVersion>
     <jRubyVersion>9.1.15.0</jRubyVersion>
@@ -80,6 +88,7 @@
     <enforcerPluginVersion>3.0.0-M1</enforcerPluginVersion>
     <installPluginVersion>2.5.2</installPluginVersion>
     <jruby.plugins.version>1.1.5</jruby.plugins.version>
+    <resourcesPluginVersion>3.0.2</resourcesPluginVersion>
     <sitePluginVersion>3.6</sitePluginVersion>
     <versionsPluginVersion>2.5</versionsPluginVersion>
   </properties>
@@ -241,6 +250,10 @@
 
 <!-- Project build settings -->
   <build>
+    <directory>${target}</directory>
+    <sourceDirectory>${srcLib}</sourceDirectory>
+    <outputDirectory>${targetMain}</outputDirectory>
+    <scriptSourceDirectory>${srcScripts}</scriptSourceDirectory>
     <extensions>
       <extension>
         <groupId>de.saumya.mojo</groupId>
@@ -248,7 +261,30 @@
         <version>${jruby.plugins.version}</version>
       </extension>
     </extensions>
-    <directory>${basedir}/pkg</directory>
+    <resources>
+      <resource>
+        <directory>${srcBin}</directory>
+        <targetPath>bin</targetPath>
+      </resource>
+      <resource>
+        <directory>${srcLib}</directory>
+        <targetPath>lib</targetPath>
+      </resource>
+      <resource>
+        <directory>${srcPlugins}</directory>
+        <targetPath>plugins</targetPath>
+      </resource>
+      <resource>
+        <directory>${src}</directory>
+        <includes>
+          <include>.gitignore</include>
+          <include>Gemfile</include>
+          <include>Rakefile</include>
+          <include>*.gemspec</include>
+          <include>version.txt</include>
+        </includes>
+      </resource>
+    </resources>
     <pluginManagement>
       <plugins>
         <plugin>
@@ -260,16 +296,6 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-clean-plugin</artifactId>
           <version>${cleanPluginVersion}</version>
-          <configuration>
-            <filesets>
-              <fileset>
-                <directory>${project.basedir}</directory>
-                <includes>
-                  <include>Gemfile.lock</include>
-                </includes>
-              </fileset>
-            </filesets>
-          </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -285,6 +311,11 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-install-plugin</artifactId>
           <version>${installPluginVersion}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>${resourcesPluginVersion}</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -339,16 +370,33 @@
         </configuration>
       </plugin>
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>process-resources</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>resources</goal>
+            </goals>
+            <configuration>
+              <addDefaultExcludes>false</addDefaultExcludes>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
         <groupId>de.saumya.mojo</groupId>
         <artifactId>bundler-maven-plugin</artifactId>
         <executions>
           <execution>
             <id>install</id>
-            <phase>initialize</phase>
+            <phase>process-resources</phase>
             <goals>
               <goal>install</goal>
             </goals>
             <configuration>
+              <launchDirectory>${project.build.outputDirectory}</launchDirectory>
               <local>false</local>
               <quiet>${vagrantQuiet}</quiet>
               <jrubyVerbose>${vagrantVerbose}</jrubyVerbose>
