@@ -53,6 +53,7 @@
     <srcLib>${src}/lib</srcLib>
     <srcPlugins>${src}/plugins</srcPlugins>
     <srcScripts>${src}/scripts</srcScripts>
+    <srcTemplates>${src}/templates</srcTemplates>
     <target>${project.basedir}/pkg</target>
     <targetMain>${target}/main</targetMain>
 
@@ -89,6 +90,7 @@
     <enforcerPluginVersion>3.0.0-M1</enforcerPluginVersion>
     <installPluginVersion>2.5.2</installPluginVersion>
     <jruby.plugins.version>1.1.5</jruby.plugins.version>
+    <jRuby9ExecPluginVersion>0.2.2</jRuby9ExecPluginVersion>
     <resourcesPluginVersion>3.0.2</resourcesPluginVersion>
     <sitePluginVersion>3.6</sitePluginVersion>
     <versionsPluginVersion>2.5</versionsPluginVersion>
@@ -281,6 +283,10 @@
         <targetPath>plugins</targetPath>
       </resource>
       <resource>
+        <directory>${srcTemplates}</directory>
+        <targetPath>templates</targetPath>
+      </resource>
+      <resource>
         <directory>${src}</directory>
         <includes>
           <include>.gitignore</include>
@@ -317,6 +323,11 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-install-plugin</artifactId>
           <version>${installPluginVersion}</version>
+        </plugin>
+        <plugin>
+          <groupId>de.saumya.mojo</groupId>
+          <artifactId>jruby9-exec-maven-plugin</artifactId>
+          <version>${jRuby9ExecPluginVersion}</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -405,6 +416,26 @@
               <launchDirectory>${project.build.outputDirectory}</launchDirectory>
               <local>false</local>
               <quiet>${vagrantQuiet}</quiet>
+              <jrubyVerbose>${vagrantVerbose}</jrubyVerbose>
+              <jrubyVersion>${jRubyVersion}</jrubyVersion>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>de.saumya.mojo</groupId>
+        <artifactId>jruby9-exec-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>package-jar</id>
+            <phase>package</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <command>warble</command>
+              <execArgs>jar</execArgs>
+              <launchDirectory>${project.build.outputDirectory}</launchDirectory>
               <jrubyVerbose>${vagrantVerbose}</jrubyVerbose>
               <jrubyVersion>${jRubyVersion}</jrubyVersion>
             </configuration>
