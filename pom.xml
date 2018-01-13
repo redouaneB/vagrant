@@ -85,6 +85,7 @@
     <fakeFtpGemVersion>0.1.1</fakeFtpGemVersion>
     <warblerGemVersion>2.0.3</warblerGemVersion>
 
+    <buildHelperPluginVersion>3.0.0</buildHelperPluginVersion>
     <cleanPluginVersion>3.0.0</cleanPluginVersion>
     <deployPluginVersion>2.8.2</deployPluginVersion>
     <enforcerPluginVersion>3.0.0-M1</enforcerPluginVersion>
@@ -300,6 +301,11 @@
     <pluginManagement>
       <plugins>
         <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>build-helper-maven-plugin</artifactId>
+          <version>${buildHelperPluginVersion}</version>
+        </plugin>
+        <plugin>
           <groupId>de.saumya.mojo</groupId>
           <artifactId>bundler-maven-plugin</artifactId>
           <version>${jruby.plugins.version}</version>
@@ -438,6 +444,26 @@
               <launchDirectory>${project.build.outputDirectory}</launchDirectory>
               <jrubyVerbose>${vagrantVerbose}</jrubyVerbose>
               <jrubyVersion>${jRubyVersion}</jrubyVersion>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-artifacts</id>
+            <phase>package</phase>
+            <goals>
+              <goal>attach-artifact</goal>
+            </goals>
+            <configuration>
+              <artifacts>
+                <artifact>
+                  <file>${project.build.directory}/${project.artifactId}-${project.version}.jar</file>
+                </artifact>
+              </artifacts>
             </configuration>
           </execution>
         </executions>
