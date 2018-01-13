@@ -49,6 +49,7 @@
 
     <src>${project.basedir}</src>
     <srcBin>${src}/bin</srcBin>
+    <srcConfig>${src}/config</srcConfig>
     <srcLib>${src}/lib</srcLib>
     <srcPlugins>${src}/plugins</srcPlugins>
     <srcScripts>${src}/scripts</srcScripts>
@@ -265,6 +266,11 @@
       <resource>
         <directory>${srcBin}</directory>
         <targetPath>bin</targetPath>
+      </resource>
+      <resource>
+        <directory>${srcConfig}</directory>
+        <filtering>true</filtering>
+        <targetPath>config</targetPath>
       </resource>
       <resource>
         <directory>${srcLib}</directory>
